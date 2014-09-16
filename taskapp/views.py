@@ -29,7 +29,7 @@ def add_task():
         flash("you have to enter a task")
         return redirect(url_for('index'))
     else:
-        db.session.add(Task(request.form['task'], 1))
+        db.session.add(Task(task, 1))
         db.session.commit()
         return redirect(url_for('index'))
 
@@ -40,4 +40,14 @@ def delete_task(task_id):
     db.session.query(Task).filter_by(task_id=new_id).delete()
     db.session.commit()
     flash("Task was deleted!")
+    return redirect(url_for('index'))
+
+
+@app.route('/update_task/<int:task_id>/', methods=["POST"])
+def update_task(task_id):
+    new_id = task_id
+    val = request.form[str(new_id)]
+    db.session.query(Task).filter_by(task_id=new_id).update({'task': val})
+    db.session.commit()
+    flash('Task was updated')
     return redirect(url_for('index'))
