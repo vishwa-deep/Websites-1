@@ -1,5 +1,10 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<button>This</button>
+<form method="POST" action="/main">
+    Task: <input type="text" name="task" value="{{ request.form.task }}">
+    <input type="submit" value="Submit">
+
+</form>
+
 {% endblock %}
