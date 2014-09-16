@@ -1,10 +1,15 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<form method="POST" action="/main">
+<form method="POST" action="{{ url_for('add_task') }}">
     Task: <input type="text" name="task" value="{{ request.form.task }}">
     <input type="submit" value="Submit">
 
 </form>
-
+<br>
+    <ul>
+    {% for tasks in open_tasks %}
+        <li>{{ tasks.task }}</li>
+    {% endfor %}
+    </ul>
 {% endblock %}

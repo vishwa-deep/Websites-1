@@ -2,10 +2,21 @@
 <html>
 <head>
     <title>Task App</title>
+    <style type="text/css">
+        .flash{
+            background-color: #86989B;
+        }
+    </style>
 </head>
 
 
 <body>
+{% for message in get_flashed_messages() %}
+ <div class="flash">{{ message }}</div>
+ {% endfor %}
+ {% if error %}
+ <div class="error"><strong>Error:</strong> {{ error }}</div>
+{% endif %}
     {% block content %}
     {% endblock %}
 </body>

@@ -16,4 +16,4 @@ class Task(db.Model):
         self.status = status
 
     def __repr__(self):
-        return '<name %r>', self.body
+        return '<name %r>', self.task

@@ -18,5 +18,19 @@ def hello_world():
 
 @app.route('/')
 def index():
+
     open_tasks = db.session.query(Task).filter_by(status='1').order_by(Task.task_id.asc())
-    return render_template("index.html")
+    return render_template("index.html", open_tasks=open_tasks)
+
+
+@app.route('/addTask/', methods=["POST"])
+def add_task():
+    task = request.form['task']
+    if not task:
+        error = "You suck"
+        flash("you have to enter a task")
+        return redirect(url_for('index'))
+    else:
+        db.session.add(Task(request.form['task'], 1))
+        db.session.commit()
+        return redirect(url_for('index'))

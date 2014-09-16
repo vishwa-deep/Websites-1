@@ -6,8 +6,9 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 DATABASE = "tasks.db"
+SECRET_KEY = "key"
 
 
 DATABASE_PATH = os.path.join(basedir, DATABASE)
 
-SQLACHEMY_DATABASE_URI = 'sqlite:///' + DATABASE_PATH
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + DATABASE_PATH
