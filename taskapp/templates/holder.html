@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+
+
+<form method="POST" action="{{ url_for('add_task') }}">
+    Task: <input type="text" name="task" value="{{ request.form.task }}">
+    <input type="submit" value="Submit">
+</form>
+<br>
+    <ul>
+    {% for tasks in open_tasks %}
+            <form action="{{ url_for('update_task', task_id=tasks.task_id) }}" method="POST">
+
+        <li style="margin: 20px; padding: 5px;">
+            <input type="text" name="{{ tasks.task_id }}" value="{{ tasks.task }}">&nbsp;&nbsp;
+            <a href="{{ url_for('delete_task', task_id=tasks.task_id) }}">Delete</a>&nbsp;&nbsp;
+            <input type="submit" value="Update">
+        </li>
+            </form>
+    {% endfor %}
+    </ul>
+    <br>
+    <br>
+    <div id="example-one" contenteditable="true">
+<style scoped>
+  [contenteditable="true"] { padding: 10px; outline: 2px dashed #CCC; }
+  [contenteditable="true"]:hover { outline: 2px dashed #0090D2; background-color: #ffff4c; }
+</style>
+<p>Everything contained within this div is editable in browsers that support <code>HTML5</code>. Go on, give it a try: click it and start typing.</p>
+</div>
+{% endblock %}

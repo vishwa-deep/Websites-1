@@ -26,7 +26,8 @@ def index():
 def add_task():
     task = request.form['task']
     if not task:
-        flash("you have to enter a task")
+        flash("You have to enter a task")
+
         return redirect(url_for('index'))
     else:
         db.session.add(Task(task, 1))
@@ -51,3 +52,13 @@ def update_task(task_id):
     db.session.commit()
     flash('Task was updated')
     return redirect(url_for('index'))
+
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
+
+@app.route('/test', methods=["POST"])
+def test():
+    return "yes"

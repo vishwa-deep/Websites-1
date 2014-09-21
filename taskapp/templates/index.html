@@ -1,34 +1,37 @@
+
 {% extends "layout.html" %}
-
 {% block content %}
+    <body>
+    <div class="container">
+        <h1>TaskMe</h1>
+        <p class="lead">My version of the "Hello World" of the web.  A todo app!</p>
+        <form id="searchForm" role="form" method="POST" action="{{ url_for('add_task') }}">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="task" value="{{ request.form.task }}" placeholder="Enter your todo item!">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Submit</button>
+                </span>
+                </div>
+            </div>
 
+        </form>
+        <br>
+        <section id="results">
+            {% for tasks in open_tasks %}
 
+                            <div class="well in-task">
+                                <p class="the-task">{{ tasks.task }}</p>&nbsp;&nbsp;
+                                <a href="{{ url_for('delete_task', task_id=tasks.task_id) }}"><span class="glyphicon glyphicon-remove-circle"></span></a>&nbsp;&nbsp;
+                                 {#<input type="submit" value="Update">#}
+                            </div>
+            {% endfor %}
 
+        </section>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    </body>
 
-<form method="POST" action="{{ url_for('add_task') }}">
-    Task: <input type="text" name="task" value="{{ request.form.task }}">
-    <input type="submit" value="Submit">
-</form>
-<br>
-    <ul>
-    {% for tasks in open_tasks %}
-            <form action="{{ url_for('update_task', task_id=tasks.task_id) }}" method="POST">
-
-        <li style="margin: 20px; padding: 5px;">
-            <input type="text" name="{{ tasks.task_id }}" value="{{ tasks.task }}">&nbsp;&nbsp;
-            <a href="{{ url_for('delete_task', task_id=tasks.task_id) }}">Delete</a>&nbsp;&nbsp;
-            <input type="submit" value="Update">
-        </li>
-            </form>
-    {% endfor %}
-    </ul>
-    <br>
-    <br>
-    <div id="example-one" contenteditable="true">
-<style scoped>
-  [contenteditable="true"] { padding: 10px; outline: 2px dashed #CCC; }
-  [contenteditable="true"]:hover { outline: 2px dashed #0090D2; background-color: #ffff4c; }
-</style>
-<p>Everything contained within this div is editable in browsers that support <code>HTML5</code>. Go on, give it a try: click it and start typing.</p>
-</div>
 {% endblock %}

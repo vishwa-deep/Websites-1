@@ -7,9 +7,15 @@
             background-color: #86989B;
         }
     </style>
+        <link href="{{ url_for('static', filename='css/cover.css') }}" rel="stylesheet">
+
+    <link href="http://bootswatch.com/cosmo/bootstrap.min.css" rel="stylesheet" media="screen">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+{#
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
           rel="stylesheet">
+#}
 
 </head>
 
@@ -19,7 +25,7 @@
  <div class="flash">{{ message }}</div>
  {% endfor %}
  {% if error %}
- <div class="error"><strong>Error:</strong> {{ error }}</div>
+     <p class="err">Error: {{ error }}</p>
 {% endif %}
     {% block content %}
     {% endblock %}
