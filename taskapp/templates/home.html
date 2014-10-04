@@ -26,6 +26,7 @@
                             <input type="text" name="{{ tasks.task_id }}" value="{{ tasks.task }}">&nbsp;&nbsp;
                             <a href="{{ url_for('delete_task', task_id=tasks.task_id) }}">Delete</a>&nbsp;&nbsp;
                             <input type="submit" value="Update">
+
                         </li>
                     </form>
                 {% endfor %}
@@ -38,3 +39,13 @@
     </body>
 
 {% endblock %}
+
+
+<section id="results">
+            {% for tasks in open_tasks %}
+                '<div class="well in-task">
+                    <p class="the-task">{{ tasks.task }}</p>&nbsp;&nbsp;
+                    <a href="{{ url_for('delete_task', task_id=tasks.task_id) }}"><span class="glyphicon glyphicon-remove-circle"></span></a>&nbsp;&nbsp;
+                    </div>'
+            {% endfor %}
+ </section>

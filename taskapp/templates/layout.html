@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Task App</title>
+    <title>TODO?</title>
     <style type="text/css">
         .flash{
             background-color: #86989B;
@@ -21,6 +21,22 @@
 
 
 <body>
+<div class="navbar navbar-default">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">TODO?</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav">
+      <li><a href="#">Portfolio</a></li>
+
+    </ul>
+  </div>
+</div>
 {% for message in get_flashed_messages() %}
  <div class="flash">{{ message }}</div>
  {% endfor %}
@@ -29,5 +45,10 @@
 {% endif %}
     {% block content %}
     {% endblock %}
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <div class="footer">
+        <hr>
+        <p>&copy; <a href="http://www.mlnorman.com">Mike Norman</a></p>
+    </div>
 </body>
 </html>

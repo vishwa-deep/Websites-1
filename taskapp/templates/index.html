@@ -3,9 +3,9 @@
 {% block content %}
     <body>
     <div class="container">
-        <h1>TaskMe</h1>
-        <p class="lead">My version of the "Hello World" of the web.  A todo app!</p>
-        <form id="searchForm" role="form" method="POST" action="{{ url_for('add_task') }}">
+        <h1>TODO?</h1>
+        <p class="lead">A simple TODO app in python and flask.</p>
+        <form id="searchForm" role="form" method="POST" onsubmit="return false;">
             <div class="form-group">
                 <div class="input-group">
                     <input type="text" class="form-control" name="task" value="{{ request.form.task }}" placeholder="Enter your todo item!">
@@ -23,13 +23,11 @@
                             <div class="well in-task">
                                 <p class="the-task">{{ tasks.task }}</p>&nbsp;&nbsp;
                                 <a href="{{ url_for('delete_task', task_id=tasks.task_id) }}"><span class="glyphicon glyphicon-remove-circle"></span></a>&nbsp;&nbsp;
-                                 {#<input type="submit" value="Update">#}
                             </div>
             {% endfor %}
 
         </section>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     </body>
