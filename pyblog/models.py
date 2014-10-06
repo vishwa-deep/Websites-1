@@ -23,3 +23,24 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<title %r>' % self.title
+
+
+class User(db.Models):
+
+    __tablename__ = 'users'
+
+    user_id = db.Column(db.String, nullable=False)
+    password = db.Column(db.String, nullable=False)
+    authenticated = db.Column(db.Boolean, default=False)
+
+    def is_active(self):
+        return True
+
+    def get_id(self):
+        return self.user_id
+
+    def is_authenticated(self):
+        return self.authenticated
+
+    def is_anonymous(self):
+        return False
