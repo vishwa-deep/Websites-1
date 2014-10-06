@@ -1,0 +1,20 @@
+{% extends 'template.html' %}
+{% block menu %}
+    <li class="nav-item">
+        <a class="pure-button" href="{{ url_for('logout') }}">Logout</a>
+    </li>
+    <li class="nav-item">
+        <a class="pure-button" href="{{ url_for('home') }}">Home</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+        <form method="POST" action="" class="pure-form">
+            {{ form.csrf_token }}
+            {{ form.title.label }}<br>{{ form.title }}<br><br>
+            {{ form.post_body.label}}<br>{{ form.post_body(style="height:300px; width:500px;") }}<br><br>
+            <button type="submit" class="pure-button pure-button-primary">Submit Post</button>
+        </form>
+    <hr>
+
+{% endblock %}
