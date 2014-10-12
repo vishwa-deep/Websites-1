@@ -1,3 +1,5 @@
-1) integrate flask-login
-2) integrate flask-admin
-3) make update and delete views
+1) integrate flask-login -- Complete
+2) integrate flask-admin -- Complete
+3) Write unittests
+4) add user - post relationship
+5) hash user passwords
