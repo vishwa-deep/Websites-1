@@ -116,22 +116,30 @@ h3 {
 .post-category {
     margin: 0 0.1em;
     padding: 0.3em 1em;
-    color: #fff;
-    background: #999;
-    font-size: 80%;
+    color: #999;
+//    background: #999;
+    font-size: 90%;
+
+    font-weight: bolder;
 }
-    .post-category-design {
-        background: #5aba59;
-    }
-    .post-category-pure {
-        background: #4d85d1;
-    }
-    .post-category-yui {
-        background: #8156a7;
-    }
-    .post-category-js {
-        background: #df2d4f;
-    }
+    /*.post-category-css {*/
+        /*background: #5aba59;*/
+    /*}*/
+    /*.post-category-python {*/
+        /*background: #4d85d1;*/
+    /*}*/
+    /*.post-category-html {*/
+        /*background: #8156a7;*/
+    /*}*/
+    /*.post-category-flask {*/
+        /*background: #df2d4f;*/
+    /*}*/
+    /*.post-category-angular{*/
+        /*background: #003bb3;*/
+    /*}*/
+    /*.post-category-welcome{*/
+        /*background: #dd1144;*/
+    /*}*/
 
 .post-images {
     margin: 1em 0;

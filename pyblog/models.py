@@ -8,16 +8,18 @@ class Post(db.Model):
 
     __tablename__ = 'posts'
 
-    task_id = db.Column(db.Integer, primary_key=True)
+    post_id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     post_body = db.Column(db.Text, nullable=False)
-    posted_date = db.Column(db.Date, default=datetime.datetime.now())
+    tags = db.Column(db.String, nullable=False)
+    posted_date = db.Column(db.Date, default=datetime.datetime.utcnow())
     updated_at = db.Column(db.Date, nullable=True)
-    status = db.Column(db.Integer, nullable=False)
+    status = db.Column(db.Integer, default=1)
 
-    def __init__(self, title, post_body, posted_date, updated_at, status):
+    def __init__(self, title='', post_body='', tags='', posted_date=datetime.datetime.utcnow(), updated_at=None, status=1):
         self.title = title
         self.post_body = post_body
+        self.tags = tags
         self.posted_date = posted_date
         self.updated_at = updated_at
         self.status = status

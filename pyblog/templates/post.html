@@ -1,26 +1,27 @@
 {% extends 'template.html' %}
 
 {% block content %}
-    {% for post in posts %}
+    {% for post in post %}
         <div class="posts">
                 <h1 class="content-subhead">Post</h1>
 
                 <!-- A single blog post -->
                 <section class="post">
                     <header class="post-header">
-                        {#<img class="post-avatar" alt="Mike Norman&#x27;s avatar" height="48" width="48" src="img/common/tilo-avatar.png">#}
-                        <h2 class="post-title"><a href="{{ url_for('post', post_id=post.post_id) }}">{{ post.title }}</a></h2>
+                    {#<img class="post-avatar" alt="Mike Norman&#x27;s avatar" height="48" width="48" src="img/common/tilo-avatar.png">
+#}
+                        <h2 class="post-title">{{ post.title }}</h2>
 
                         <p class="post-meta">
-                            By <a href="#" class="post-author">Mike Norman</a> under <a class="post-category post-category-{{ post.tags }}">{{ post.tags }}</a>
+                            By <a href="#" class="post-author">Mike Norman</a> under <a class="post-category post-category-design" href="#">CSS</a> <a class="post-category post-category-pure" href="#">Pure</a>
                         </p>
                     </header>
 
-                    {#<div class="post-description">
+                    <div class="post-description">
                         <p>
                             {{ post.post_body }}
                         </p>
-                    </div>#}
+                    </div>
                 </section>
             </div>
     {% endfor %}
