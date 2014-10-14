@@ -5,7 +5,7 @@ from datetime import date
 
 db.create_all()
 
-db.session.add(Post('First post', 'this is my first post','Welcome', date(2014, 10, 03), None, 1))
+db.session.add(Post('First post', 'this is my first post','Welcome', date(2014, 10, 03), None, 1, 'Mike'))
 user = User(user_id='admin', authenticated=False)
 user.hash_password('password')
 new_usr = User(user_id='mike', authenticated=False)

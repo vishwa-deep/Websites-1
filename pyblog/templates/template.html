@@ -9,8 +9,8 @@
 
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/pure-min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/prettify.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
+   {# <link rel="stylesheet" href="{{ url_for('static', filename='css/prettify.css') }}">
+   #} <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
 {#
     <link rel="stylesheet" href ='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
 #}
@@ -42,7 +42,7 @@
                     // add prettyprint class to all <pre><code></code></pre> blocks
             var prettify = false;
             $("pre code").parent().each(function() {
-                $(this).addClass('prettyprint linenums');
+                $(this).addClass('prettyprint');
                 prettify = true;
             });
             prettyPrint();

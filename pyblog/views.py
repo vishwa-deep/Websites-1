@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, url_for, flash, redirect, ses
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 from forms import AddPost, LoginForm
-from datetime import datetime
+import datetime
 from flask.ext.admin import Admin
 from admin import MyView, AuthenticatedMenuLink, MyModel
 from flask.ext.login import LoginManager, logout_user, login_user, current_user, login_required
@@ -95,5 +95,6 @@ def post(post_id):
     post = db.session.query(Post).filter_by(post_id=new_id)
     for p in post:
         tag = p.tags.split()
+    dt = datetime.date.today()
 
-    return render_template('post.html', post=post, tag=tag)
+    return render_template('post.html', post=post, tag=tag, dt=dt)

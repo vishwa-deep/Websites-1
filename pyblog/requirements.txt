@@ -10,3 +10,4 @@ SQLAlchemy==0.9.7
 WTForms==2.0.1
 Werkzeug==0.9.6
 itsdangerous==0.24
+passlib==1.6.2

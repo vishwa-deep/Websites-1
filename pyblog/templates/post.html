@@ -3,7 +3,8 @@
 {% block content %}
     {% for post in post %}
         <div class="posts">
-                <h1 class="content-subhead">Post</h1>
+
+                <h1 class="content-subhead">Date: {{ dt }}</h1>
 
                 <!-- A single blog post -->
                 <section class="post">
@@ -13,7 +14,7 @@
                         <h2 class="post-title">{{ post.title }}</h2>
 
                         <p class="post-meta">
-                            By <a href="#" class="post-author">Mike Norman</a>&nbsp;&nbsp; <span class="glyphicon glyphicon-tags"></span> <a class="post-category post-category-{{ post.tags }}">{{ post.tags }}</a>
+                            By <a href="#" class="post-author">{{ post.poster.user_id }}</a>&nbsp;&nbsp; <span class="glyphicon glyphicon-tags"></span> <a class="post-category post-category-{{ post.tags }}">{{ post.tags }}</a>
                         </p>
                     </header>
 
