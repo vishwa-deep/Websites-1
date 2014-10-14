@@ -9,8 +9,7 @@ from flask.ext.admin import Admin
 from admin import MyView, AuthenticatedMenuLink, MyModel
 from flask.ext.login import LoginManager, logout_user, login_user, current_user, login_required
 
-UID = 'Mike'
-PWD = 'Password'
+
 app = Flask(__name__)
 app.config.from_object('config')
 login_manager = LoginManager()
@@ -47,11 +46,10 @@ def login():
         return redirect('/admin/')
     if request.method == "POST":
         if form.validate_on_submit():
-            user = User.query.filter_by(user_id=form.uid.data, password=form.password.data).first()
-            if not user:
+            user = User.query.filter_by(user_id=form.uid.data).first()
+            if not user or not user.verify_password(form.password.data):
                 return render_template('login.html', form=form)
             else:
-                print user
                 user.authenticated = True
                 #session['logged_in'] = True
                 db.session.add(user)

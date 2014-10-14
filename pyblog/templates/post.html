@@ -19,7 +19,9 @@
 
                     <div class="post-description">
                         <p>
-                            {{ post.post_body }}
+                            {% autoescape false %}
+                                {{ post.post_body }}
+                            {% endautoescape %}
                         </p>
                     </div>
                 </section>
