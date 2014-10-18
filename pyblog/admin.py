@@ -7,6 +7,7 @@ from flask.ext.login import current_user
 from flask.ext.admin.contrib.sqla import ModelView
 
 
+
 class MyView(BaseView):
 
     def is_accessible(self):
