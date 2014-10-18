@@ -11,9 +11,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/pure-min.css') }}">
    {# <link rel="stylesheet" href="{{ url_for('static', filename='css/prettify.css') }}">
    #} <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
-{#
-    <link rel="stylesheet" href ='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-#}
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <script rel="text/javascript" src="{{ url_for('static', filename='js/prettify.js') }}"></script>
     <script rel="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 
@@ -42,7 +40,7 @@
                     // add prettyprint class to all <pre><code></code></pre> blocks
             var prettify = false;
             $("pre code").parent().each(function() {
-                $(this).addClass('prettyprint');
+                $(this).addClass('prettyprint preScroll');
                 prettify = true;
             });
             prettyPrint();
@@ -74,6 +72,9 @@
     </div>
 
     <div class="content pure-u-1 pure-u-md-3-4">
+        {% for msg in get_flashed_messages() %}
+            <p class="flash-msg">{{ msg }}</p>
+        {% endfor %}
         <div>
             <!-- A wrapper for all the blog posts -->
             {% block content %}

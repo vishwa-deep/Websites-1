@@ -13,11 +13,23 @@
         {{ form.csrf_token }}
         <fieldset>
             <legend>Login to add a post!</legend>
+            {% if error %}
+                {{ error }}
+            {% endif %}
 
             {{ form.uid.label }} {{ form.uid }}<br>
+            {% if form.uid.errors %}
+                {% for error in form.uid.errors %}
+                    {{ error }}
+                {% endfor %}
+            {% endif %}
 
             {{ form.password.label }} {{ form.password }}<br>
-
+            {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                    {{ error }}
+                {% endfor %}
+            {% endif %}
             <button type="submit" class="pure-button pure-button-primary">Sign In</button>
         </fieldset>
     </form>

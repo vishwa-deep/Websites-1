@@ -33,6 +33,15 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 
+def flash_errors(form):
+    for field, errors in form.errors.items():
+        for error in errors:
+            flash(u"Error in the %s field - %s" % (
+                getattr(form, field).label.text, error), 'error')
+
+
+
+
 @app.route('/')
 def home():
     posts = db.session.query(Post).filter_by(status='1').order_by(Post.posted_date.desc())
@@ -42,13 +51,15 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm(request.form)
+    error = None
     if current_user.is_authenticated():
         return redirect('/admin/')
     if request.method == "POST":
         if form.validate_on_submit():
             user = User.query.filter_by(user_id=form.uid.data).first()
             if not user or not user.verify_password(form.password.data):
-                return render_template('login.html', form=form)
+                error = "Username or password does not exist!"
+                return render_template('login.html', form=form, error=error)
             else:
                 user.authenticated = True
                 #session['logged_in'] = True
@@ -56,6 +67,9 @@ def login():
                 db.session.commit()
                 login_user(user, remember=False)
                 return redirect('admin')
+        else:
+            flash_errors(form)
+            return render_template('/login.html', form=form)
     return render_template('login.html', form=form)
 
 
@@ -67,6 +81,7 @@ def logout():
     db.session.add(user)
     db.session.commit()
     logout_user()
+    flash('Logged out successfully.')
     return redirect(url_for('home'))
 
 
@@ -88,11 +103,12 @@ def logout():
 #     return redirect('/admin')
 
 
-@app.route('/post/<int:post_id>')
+@app.route('/post/<string:post_id>')
 def post(post_id):
-    new_id = post_id
+    new_id = post_id.replace('_', ' ')
     tag = []
-    post = db.session.query(Post).filter_by(post_id=new_id)
+    post = db.session.query(Post).filter_by(title=new_id)
+
     for p in post:
         tag = p.tags.split()
     dt = datetime.date.today()

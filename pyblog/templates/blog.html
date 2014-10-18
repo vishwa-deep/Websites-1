@@ -9,10 +9,10 @@
                 <section class="post">
                     <header class="post-header">
                         {#<img class="post-avatar" alt="Mike Norman&#x27;s avatar" height="48" width="48" src="img/common/tilo-avatar.png">#}
-                        <h2 class="post-title"><a href="{{ url_for('post', post_id=post.post_id) }}">{{ post.title }}</a></h2>
+                        <h2 class="post-title"><a href="{{ url_for('post', post_id=post.title.replace(' ', '_'))}}">{{ post.title }}</a></h2>
 
                         <p class="post-meta">
-                            <span class="glyphicon glyphicon-tags"></span> <a class="post-category post-category-{{ post.tags }}">{{ post.tags }}</a>
+                            <span class="glyphicon glyphicon-calendar"></span> <a class="post-category post-date">{{ post.posted_date }}</a>
                         </p>
                     </header>
 

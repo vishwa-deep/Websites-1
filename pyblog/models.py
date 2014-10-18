@@ -2,7 +2,6 @@ __author__ = 'admin'
 
 from views import db
 from passlib.apps import custom_app_context as pwd_context
-from flask.ext.login import current_user
 
 
 class Post(db.Model):
