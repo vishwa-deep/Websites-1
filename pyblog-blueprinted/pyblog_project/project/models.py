@@ -1,6 +1,6 @@
 __author__ = 'admin'
 
-from views import db
+from project import db
 from passlib.apps import custom_app_context as pwd_context
 
 

@@ -8,6 +8,7 @@ DATABASE = 'blog.db'
 CSRF_ENABLED = True
 WTF_CSRF_ENABLED= True
 SECRET_KEY= 'secret'
+DEBUG = False
 
 DATABASE_PATH = os.path.join(basedir, DATABASE)
 

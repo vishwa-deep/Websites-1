@@ -1,6 +1,6 @@
 __author__ = 'admin'
-from views import db
-from models import Post, User
+from project import db
+from project.models import Post, User
 from datetime import date
 
 db.create_all()
