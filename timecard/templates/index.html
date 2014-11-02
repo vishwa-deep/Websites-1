@@ -1,0 +1,90 @@
+{% extends 'template.html' %}
+
+
+    {% block jquery %}
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('#content').hide();
+      
+      $('#passwordReset').on('submit',function(){
+        $('#content').html('<img id="loader-img" alt="" src="../static/img/ajax-loader.gif") }}" width="70" height="70" align="center" />').show();
+        console.log('form submites')
+        var user_email = $('input[name="email"]').val();
+        console.log(user_email);
+        $.ajax({
+          type: "POST",
+          url: '/send_temp_pass/',
+          data: {email: user_email},
+          success: function(results){
+            setTimeout(function () {
+            }, 3000);
+            $("input").val('')
+            var response = results.res[0].success_message;
+            $('#content').hide();
+            alert(response);
+          },
+          error: function(err){
+            console.log(err);
+          },
+
+        });
+      });
+    });
+
+    </script>
+    {% endblock %}
+
+
+
+    {% block content %}
+   
+      
+      <!-- <a href="/admin_view"><button class="btn btn-primary" style="float: right;">Admin</button></a><br>
+   -->
+      {% if get_flashed_messages() %}
+      <div style="padding: 10px 0; text-align: center; background-color: #bbf; margin: auto auto; font-weight: bolder; width: 75%;">
+      {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+      
+
+    </div>
+    {% endif %}
+      <form class="form-signin" method="POST">
+        {{ form.csrf_token }}
+        <h2 class="form-signin-heading">Timecard</h2>
+        {{ form.user(class="form-control", style="margin: 5px 0;") }}
+        {% if form.user.errors %} {% for error in form.user.errors %} {{ error }} {% endfor %} {% endif %}
+        {{ form.password(class="form-control", placeholder="Password", style="margin: 5px 0;") }}
+        {% if form.password.errors %} {% for error in form.password.errors %} {{ error }} {% endfor %} {% endif %}
+        {{ form.shift(class="form-control", checked="checked", type="radio", style="margin: 5px 0;") }}
+        {% if form.shift.errors %} {% for error in form.shift.errors %} {{ error }} {% endfor %} {% endif %}
+        {{ form.clock_in_out(class="form-control rad", style="margin: 5px 0;") }}
+        {% if form.clock_in_out.errors %} {% for error in form.clock_in_out.errors %} {{ error }} {% endfor %} {% endif %}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+      </form>
+      <br>
+      <br>
+      <form id="passwordReset" role="form" method="POST" onsubmit="return false;">
+        <div class="row">
+          <div class="col-lg-4" style="float: right;">
+            <div class="input-group">
+              <input id='emailInput' type="email" class="form-control" name="email" placeholder="Enter email to get a temp password...">
+              <span class="input-group-btn">
+                <button id="passwordReset" class="btn btn-primary" name="email" type="submit">Send!</button>
+                <div id="content"></div>
+              
+              </span>
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-3 -->
+        </div><!-- /.row -->
+      </form>
+      <p style="float: right;">Forgot your password?  Enter your email above to reset it.</p>
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    {% endblock %}
+
+

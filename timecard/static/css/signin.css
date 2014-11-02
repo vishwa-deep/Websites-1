@@ -1,0 +1,101 @@
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  background-color: #ffffff;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  border-radius: 0;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+ul{
+  list-style: None;
+}
+.form-control {
+  border-radius: 0;
+}
+.btn{
+  border-radius: 0;
+}
+
+#load{
+    padding: 0 3em;
+    outline: none;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1em;
+    line-height: 4;
+    overflow: hidden;
+    border-radius: 5px;
+    background: rgba(0,0,0,0.2);
+    text-align: center;
+    cursor: pointer;
+    margin: 20px auto;
+    display: block;
+}
+
+#loader-img{
+margin: 0 auto;
+display: block;
+}
+ 
+/*#content{
+    width: 40%;
+    margin: 0 auto;
+    padding: 3em;
+    text-align: center;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+ */
+
+ #content{
+   height: 70px;
+   width: 70px;
+   position: fixed;
+   z-index: 1000;
+   left: 50%;
+   top: 50%;
+   margin: -25px 0 0 -25px;
+}
+
+.border{
+  border: 3px solid #fff;
+  border-radius: 5px;
+}

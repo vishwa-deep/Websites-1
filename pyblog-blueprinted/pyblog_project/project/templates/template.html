@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/pure-min.css') }}">
    {# <link rel="stylesheet" href="{{ url_for('static', filename='css/prettify.css') }}">
    #} <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-    <script rel="text/javascript" src="{{ url_for('static', filename='js/prettify.js') }}"></script>
-    <script rel="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+   <script rel="text/javascript" src="{{ url_for('static', filename='js/prettify.js') }}"></script>
+    <script rel="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <!--[if gt IE 8]><!-->
     <!--[if lte IE 8]>
 
@@ -32,7 +33,7 @@
     <!--[if gt IE 8]><!-->
     <!--<![endif]-->
 
-    <script type="text/javascript">
+   <script type="text/javascript">
         /*******************************************************
         * This function is thanks to Miguel Grinberg's blog.   *
         * ******************************************************/
@@ -98,6 +99,7 @@
 
 
 
-
+{% block disqus %}
+{% endblock %}
 </body>
 </html>
